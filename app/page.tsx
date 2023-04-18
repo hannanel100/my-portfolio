@@ -20,9 +20,9 @@ const Button = ({ children, href, type }: ButtonProps) => {
     <button
       className={`b h-full transform cursor-pointer rounded-lg px-4  shadow-lg outline-none transition-transform duration-150 focus:ring-4 active:scale-75 sm:h-2/3 sm:py-2 ${color}`}
     >
-      <Link href={href} target="_blank">
+      <a href={href} target="_blank">
         {children}
-      </Link>
+      </a>
     </button>
   );
 };
