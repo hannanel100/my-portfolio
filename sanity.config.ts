@@ -5,7 +5,7 @@ const config = defineConfig({
   projectId: "akedaqmq",
   dataset: "production",
   title: "My Portfolio",
-  apiVersion: "2023-17-04",
+  apiVersion: "2023-04-17",
   basePath: "/admin",
   plugins: [deskTool()],
   schema: { types: schemas },

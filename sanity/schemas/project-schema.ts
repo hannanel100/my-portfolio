@@ -34,6 +34,7 @@ const project = {
       title: "URL",
       type: "url",
     },
+    { name: "github", title: "Github", type: "url" },
     {
       name: "content",
       title: "Content",
@@ -44,6 +45,7 @@ const project = {
         },
       ],
     },
+    { name: "tags", title: "Tags", type: "array", of: [{ type: "string" }] },
   ],
 };
 
