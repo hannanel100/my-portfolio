@@ -1,5 +1,6 @@
 import Image from "next/image";
 import "./globals.css";
+import CustomNavbar from "./Navbar";
 
 export const metadata = {
   title: "Create Next App",
@@ -14,7 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-pt-20 bg-slate-950 text-slate-50">
       <body>
-        <nav className="fixed left-0 top-0 z-20 w-full border-gray-200 bg-white dark:bg-gray-900">
+        {/* FIXME: not working on mobile */}
+        <CustomNavbar />
+        {/* <nav className="fixed left-0 top-0 z-20 w-full border-gray-200 bg-white dark:bg-gray-900">
           <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
             <a href="#" className="flex items-center">
               <Image src="/logo.png" width={50} height={50} alt="logo" />
@@ -93,7 +96,7 @@ export default function RootLayout({
               </ul>
             </div>
           </div>
-        </nav>
+        </nav> */}
 
         {children}
       </body>
