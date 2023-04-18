@@ -1,11 +1,8 @@
-import { PortableTextBlock } from "sanity";
 import { getProjects, getAbout } from "@/sanity/sanity-utils";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
-// const Content = ({ content }: { content: PortableTextBlock[] }) => {
-//   return <div className="text-red-600">{content}</div>;
-// };
+
 type ButtonProps = {
   children: React.ReactNode;
   href: string;
