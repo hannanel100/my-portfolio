@@ -44,7 +44,9 @@ const Technology = ({ technology }: { technology: TechnologyProps }) => {
       <span className="grid h-16 place-items-center rounded-lg bg-teal-950 p-2  text-teal-100 sm:w-full">
         {technology.icon}
       </span>
-      <span>{technology.title}</span>
+      <span className="bg-gradient-to-tr  from-teal-300 to-orange-400 bg-clip-text text-transparent">
+        {technology.title}
+      </span>
     </div>
   );
 };
@@ -298,7 +300,9 @@ export default async function Home() {
                     <span className="grid h-16 place-items-center rounded-lg bg-teal-950 p-2  text-teal-100 sm:w-full">
                       {item.icon}
                     </span>
-                    <span>{item.title}</span>
+                    <span className="bg-gradient-to-tr  from-teal-300 to-orange-400 bg-clip-text text-transparent">
+                      {item.title}
+                    </span>
                   </div>
                 ))}
             </div>
