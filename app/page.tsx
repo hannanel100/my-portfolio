@@ -34,6 +34,7 @@ import {
 } from "react-icons/si";
 import { Technologies } from "@/types/technologies";
 import { Tool } from "@/types/tools";
+import ContactForm from "./ContactForm";
 // add icon to Technologies object
 interface TechnologyProps extends Technologies {
   icon: JSX.Element;
@@ -165,6 +166,10 @@ export default async function Home() {
     })
   )[0];
 
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    console.log(e);
+  };
   return (
     <div className="font-2xl mx-8 mt-24 sm:mx-auto sm:px-8 md:max-w-5xl">
       <div className="flex items-center justify-between">
@@ -182,7 +187,7 @@ export default async function Home() {
           className="hidden sm:block"
         />
       </div>
-      <div id="about" className="mt-8">
+      <section id="about" className="mt-8">
         <h2 className="text-3xl font-bold text-gray-400">About Me</h2>
         <div className="mt-5">
           {about &&
@@ -201,57 +206,57 @@ export default async function Home() {
               </div>
             ))}
         </div>
-      </div>
+      </section>
 
-      <h2 className="mt-24 text-3xl font-bold text-gray-400" id="projects">
-        My Projects
-      </h2>
-      <div className="mt-5 grid gap-8 sm:grid-cols-2 md:grid-cols-3">
-        {projects.map((project) => (
-          <article
-            key={project._id}
-            className="grid grid-rows-[50px_minmax(100px,_1fr)_100px]  justify-between rounded-lg border border-teal-500 border-opacity-40 p-4"
-          >
-            <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text font-extrabold text-transparent">
-              {project.name}
-            </div>
-            <PortableText value={project.content} />
-            <div className="grid grid-cols-1 grid-rows-2 gap-2 sm:grid-cols-2 sm:grid-rows-1">
-              {project.url && (
-                <Button type="live" href={project.url}>
-                  Live App
-                </Button>
+      <section className="mt-5 " id="projects">
+        <h2 className="mt-24 text-3xl font-bold text-gray-400">My Projects</h2>
+        <div className="mt-6 grid gap-8 sm:grid-cols-2 md:grid-cols-3">
+          {projects.map((project) => (
+            <article
+              key={project._id}
+              className="grid grid-rows-[50px_minmax(100px,_1fr)_100px]  justify-between rounded-lg border border-teal-500 border-opacity-40 p-4"
+            >
+              <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text font-extrabold text-transparent">
+                {project.name}
+              </div>
+              <PortableText value={project.content} />
+              <div className="grid grid-cols-1 grid-rows-2 gap-2 sm:grid-cols-2 sm:grid-rows-1">
+                {project.url && (
+                  <Button type="live" href={project.url}>
+                    Live App
+                  </Button>
+                )}
+                {project.github && (
+                  <Button type="github" href={project.github}>
+                    Code
+                  </Button>
+                )}
+              </div>
+              {project.tags && <h5 className="mt-8 text-xl">Technologies</h5>}
+              <div className="grid  grid-cols-2 place-items-start gap-2  p-2 sm:gap-4">
+                {project.tags &&
+                  project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-lg bg-teal-950 p-2 text-center text-sm text-teal-100 sm:w-full"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+              </div>
+              {project.image && (
+                <Image
+                  src={project.image}
+                  width={250}
+                  height={150}
+                  alt={project.alt}
+                  className="object-fit mx-auto mt-4 h-36"
+                />
               )}
-              {project.github && (
-                <Button type="github" href={project.github}>
-                  Code
-                </Button>
-              )}
-            </div>
-            {project.tags && <h5 className="mt-8 text-xl">Technologies</h5>}
-            <div className="grid  grid-cols-2 place-items-start gap-2  p-2 sm:gap-4">
-              {project.tags &&
-                project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-lg bg-teal-950 p-2 text-center text-sm text-teal-100 sm:w-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
-            </div>
-            {project.image && (
-              <Image
-                src={project.image}
-                width={250}
-                height={150}
-                alt={project.alt}
-                className="object-fit mx-auto mt-4 h-36"
-              />
-            )}
-          </article>
-        ))}
-      </div>
+            </article>
+          ))}
+        </div>
+      </section>
       {/* Technologies section */}
       <section>
         <h2 className="mt-24 text-3xl font-bold text-gray-400" id="tech">
@@ -308,6 +313,10 @@ export default async function Home() {
             </div>
           </article>
         </div>
+      </section>
+      {/* contact */}
+      <section id="contact">
+        <ContactForm  />
       </section>
     </div>
   );
