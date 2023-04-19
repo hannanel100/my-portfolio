@@ -1,4 +1,9 @@
-import { getProjects, getAbout, getTechnologies } from "@/sanity/sanity-utils";
+import {
+  getProjects,
+  getAbout,
+  getTechnologies,
+  getTools,
+} from "@/sanity/sanity-utils";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
@@ -22,8 +27,13 @@ import {
   SiFlask,
   SiExpress,
   SiPrisma,
+  SiGit,
+  SiGithub,
+  SiVisualstudiocode,
+  SiFigma,
 } from "react-icons/si";
 import { Technologies } from "@/types/technologies";
+import { Tool } from "@/types/tools";
 // add icon to Technologies object
 interface TechnologyProps extends Technologies {
   icon: JSX.Element;
@@ -99,28 +109,43 @@ const addIconToTechnology = (technology: Technologies) => {
         <TbBrandNextjs className="text-4xl text-orange-300" />
       ),
   };
-  console.log(obj);
   return obj;
 };
+
+const addIconToTool = (tool: Tool) => {
+  const obj = {
+    ...tool,
+    icon:
+      tool.name === "Git" ? (
+        <SiGit className="text-2xl text-orange-300" />
+      ) : tool.name === "vsCode" ? (
+        <SiVisualstudiocode className="text-2xl text-orange-300" />
+      ) : tool.name ? (
+        <SiGithub className="text-2xl text-orange-300" />
+      ) : (
+        <SiFigma className="text-2xl text-orange-300" />
+      ),
+  };
+  return obj;
+};
+
 export default async function Home() {
   const projects = await getProjects();
   const about = await getAbout();
   const technologies = await getTechnologies();
-  console.log("🚀 ~ file: page.tsx:34 ~ Home ~ technologies:", technologies);
-  // for each item in technologies array, add the icon to the object
-
+  const tools = await getTools();
+  console.log("🚀 ~ file: page.tsx:110 ~ Home ~ tools:", tools);
+  const toolsWithIcon = tools.map((tool) => addIconToTool(tool));
   const frontend = technologies.map((item) => {
     if (item.isFrontend) {
       return addIconToTechnology(item);
     }
   });
-  console.log("🚀 ~ file: page.tsx:36 ~ Home ~ frontend:", frontend);
   const backend = technologies.map((item) => {
     if (!item.isFrontend) {
       return addIconToTechnology(item);
     }
   });
-  console.log("🚀 ~ file: page.tsx:38 ~ Home ~ backend:", backend);
   const socials = about.map((item) =>
     item.socials.map((social) => {
       const obj = {
@@ -138,7 +163,6 @@ export default async function Home() {
     })
   )[0];
 
-  console.log("🚀 ~ file: page.tsx:40 ~ Home ~ socials:", socials);
   return (
     <div className="font-2xl mx-8 mt-24 sm:mx-auto sm:px-8 md:max-w-5xl">
       <div className="flex items-center justify-between">
@@ -260,27 +284,26 @@ export default async function Home() {
                 )}
             </div>
           </article>
-          <article className="grid grid-rows-[50px_minmax(100px,_1fr)_100px]  justify-between rounded-lg border border-teal-500 border-opacity-40 p-4">
+          <article className="grid grid-rows-[50px_minmax(100px,_1fr)]  justify-between rounded-lg border border-teal-500 border-opacity-40 p-4">
             <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text font-extrabold text-transparent">
-              Other
+              Tools
             </div>
-            <div className="grid grid-cols-1 grid-rows-2 gap-2 sm:grid-cols-2 sm:grid-rows-1">
-              <Button type="live" href="https://www.figma.com/">
-                Figma
-              </Button>
-              <Button type="github" href="https://www.adobe.com/">
-                Adobe
-              </Button>
-              <Button type="github" href="https://www.gitkraken.com/">
-                GitKraken
-              </Button>
-              <Button type="github" href="https://www.notion.so/">
-                Notion
-              </Button>
+            <div className="flex flex-wrap justify-evenly gap-8 ">
+              {toolsWithIcon &&
+                toolsWithIcon.map((item) => (
+                  <div
+                    className="flex w-16 flex-col items-center gap-2"
+                    key={item._id}
+                  >
+                    <span className="grid h-16 place-items-center rounded-lg bg-teal-950 p-2  text-teal-100 sm:w-full">
+                      {item.icon}
+                    </span>
+                    <span>{item.title}</span>
+                  </div>
+                ))}
             </div>
           </article>
         </div>
-        s
       </section>
     </div>
   );
