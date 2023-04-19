@@ -1,8 +1,17 @@
-import { getProjects, getAbout } from "@/sanity/sanity-utils";
+import { getProjects, getAbout, getTechnologies } from "@/sanity/sanity-utils";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
-import { FaLinkedin, FaGithub } from "react-icons/fa";
+import {
+  FaLinkedin,
+  FaGithub,
+  FaReact,
+  FaNodeJs,
+  FaPython,
+} from "react-icons/fa";
+import { TbBrandNextjs } from "react-icons/tb";
+import { SiTailwindcss, SiPostgresql, SiTypescript, SiMongodb, SiDocker } from "react-icons/si";
+import { Technologies } from "@/types/technologies";
 type ButtonProps = {
   children: React.ReactNode;
   href: string;
@@ -26,14 +35,53 @@ const Button = ({ children, href, type }: ButtonProps) => {
     </button>
   );
 };
+
+const addIconToTechnology = (technology: Technologies) => {
+  const obj = {
+    ...technology,
+    icon:
+      technology.name === "React" ? (
+        <FaReact className="text-4xl text-orange-300" />
+      ) : technology.name === "Node" ? (
+        <FaNodeJs className="text-4xl text-orange-300" />
+      ) : technology.name === "Tailwindcss" ? (
+        <SiTailwindcss className="text-4xl text-orange-300" />
+      ) : technology.name === "Python" ? (
+        <FaPython className="text-4xl text-orange-300" />
+      ) : technology.name === "PostgresSQL" ? (
+        <SiPostgresql className="text-4xl text-orange-300" />
+      ) : technology.name === "Typescript" ? (
+        <SiTypescript className="text-4xl text-orange-300" />
+      ) : technology.name === "MongoDB" ? (
+        <SiMongodb className="text-4xl text-orange-300" />
+      ) : technology.name === "Docker" ? (
+        <SiDocker className="text-4xl text-orange-300" />
+      ) : (
+        <TbBrandNextjs className="text-4xl text-orange-300" />
+      ),
+  };
+  console.log(obj);
+  return obj;
+};
 export default async function Home() {
   const projects = await getProjects();
   const about = await getAbout();
-  console.log(
-    "🚀 ~ file: page.tsx:32 ~ Home ~ about:",
-    about.map((item) => item.socials.map((social) => social.name))
-  );
+  const technologies = await getTechnologies();
+  console.log("🚀 ~ file: page.tsx:34 ~ Home ~ technologies:", technologies);
+  // for each item in technologies array, add the icon to the object
 
+  const frontend = technologies.map((item) => {
+    if (item.isFrontend) {
+      return addIconToTechnology(item);
+    }
+  });
+  console.log("🚀 ~ file: page.tsx:36 ~ Home ~ frontend:", frontend);
+  const backend = technologies.map((item) => {
+    if (!item.isFrontend) {
+      return addIconToTechnology(item);
+    }
+  });
+  console.log("🚀 ~ file: page.tsx:38 ~ Home ~ backend:", backend);
   const socials = about.map((item) =>
     item.socials.map((social) => {
       const obj = {
@@ -45,7 +93,7 @@ export default async function Home() {
           ) : (
             <FaLinkedin className="text-2xl text-orange-300" />
           ),
-        id: social._id,
+        id: social._key,
       };
       return obj;
     })
@@ -74,8 +122,8 @@ export default async function Home() {
         <div className="mt-5">
           {about &&
             about.map((item) => (
-              <>
-                <PortableText value={item.text} key={item._id} />
+              <div key={item._id}>
+                <PortableText value={item.text} />
                 {socials && (
                   <div className="mt-4 flex gap-4">
                     {socials.map((element) => (
@@ -85,7 +133,7 @@ export default async function Home() {
                     ))}
                   </div>
                 )}
-              </>
+              </div>
             ))}
         </div>
       </div>
@@ -95,7 +143,7 @@ export default async function Home() {
       </h2>
       <div className="mt-5 grid gap-8 sm:grid-cols-2 md:grid-cols-3">
         {projects.map((project) => (
-          <div
+          <article
             key={project._id}
             className="grid grid-rows-[50px_minmax(100px,_1fr)_100px]  justify-between rounded-lg border border-teal-500 border-opacity-40 p-4"
           >
@@ -136,9 +184,81 @@ export default async function Home() {
                 className="object-fit mx-auto mt-4 h-36"
               />
             )}
-          </div>
+          </article>
         ))}
       </div>
+      {/* Technologies section */}
+      <section>
+        <h2 className="mt-24 text-3xl font-bold text-gray-400" id="tech">
+          Technologies
+        </h2>
+        <div className="mt-5 grid gap-8 sm:grid-cols-2 md:grid-cols-3">
+          <article className="grid grid-rows-[50px_minmax(100px,_1fr)_100px]  justify-between rounded-lg border border-teal-500 border-opacity-40 p-4">
+            <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text font-extrabold text-transparent">
+              Frontend
+            </div>
+            <div className="flex flex-wrap items-center justify-between gap-2 ">
+              {frontend &&
+                frontend.map(
+                  (item) =>
+                    item?.icon && (
+                      <div
+                        className="flex w-16 flex-col items-center gap-2"
+                        key={item._id}
+                      >
+                        <span className="grid h-16 place-items-center rounded-lg bg-teal-950 p-2  text-teal-100 sm:w-full">
+                          {item.icon}
+                        </span>
+                        <span>{item.title}</span>
+                      </div>
+                    )
+                )}
+            </div>
+          </article>
+          <article className="grid grid-rows-[50px_minmax(100px,_1fr)_100px]  justify-between rounded-lg border border-teal-500 border-opacity-40 p-4">
+            <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text font-extrabold text-transparent">
+              Backend
+            </div>
+            <div className="flex flex-wrap items-center justify-between gap-2 ">
+              {backend &&
+                backend.map(
+                  (item) =>
+                    item?.icon && (
+                      <div
+                        className="flex w-16 flex-col items-center gap-2"
+                        key={item._id}
+                      >
+                        <span className="grid h-16 place-items-center rounded-lg bg-teal-950 p-2  text-teal-100 sm:w-full">
+                          {item.icon}
+                        </span>
+                        <span>{item.title}</span>
+                      </div>
+                    )
+                )}
+            </div>
+          </article>
+          <article className="grid grid-rows-[50px_minmax(100px,_1fr)_100px]  justify-between rounded-lg border border-teal-500 border-opacity-40 p-4">
+            <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text font-extrabold text-transparent">
+              Other
+            </div>
+            <div className="grid grid-cols-1 grid-rows-2 gap-2 sm:grid-cols-2 sm:grid-rows-1">
+              <Button type="live" href="https://www.figma.com/">
+                Figma
+              </Button>
+              <Button type="github" href="https://www.adobe.com/">
+                Adobe
+              </Button>
+              <Button type="github" href="https://www.gitkraken.com/">
+                GitKraken
+              </Button>
+              <Button type="github" href="https://www.notion.so/">
+                Notion
+              </Button>
+            </div>
+          </article>
+        </div>
+        s
+      </section>
     </div>
   );
 }

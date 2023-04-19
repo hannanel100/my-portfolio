@@ -9,6 +9,6 @@ export type About = {
   socials: {
     name: string;
     url: string;
-    _id: string;
+    _key: string;
   }[];
 };

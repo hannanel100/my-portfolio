@@ -1,5 +1,6 @@
 import { Project } from "@/types/project";
 import { About } from "@/types/about";
+import { Technologies } from "@/types/technologies";
 import { createClient, groq } from "next-sanity";
 
 export async function getProjects(): Promise<Project[]> {
@@ -37,5 +38,25 @@ export async function getAbout(): Promise<About[]> {
     "slug": slug.current,
     text,
     socials
+  }`);
+}
+
+export async function getTechnologies(): Promise<Technologies[]> {
+  const client = createClient({
+    projectId: "akedaqmq",
+    dataset: "production",
+    apiVersion: "2023-04-17",
+  });
+
+  return client.fetch(groq`*[_type=="technologies"]{
+    _id,
+    _createdAt,
+    name,
+    "slug": slug.current,
+    "image": image.asset->url,
+    "alt": image.alt,
+    url,
+    title,
+    isFrontend
   }`);
 }
