@@ -6,4 +6,9 @@ export type About = {
   name: string;
   slug: string;
   text: PortableTextBlock[];
+  socials: {
+    name: string;
+    url: string;
+    _id: string;
+  }[];
 };

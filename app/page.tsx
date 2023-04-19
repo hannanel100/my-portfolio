@@ -2,7 +2,7 @@ import { getProjects, getAbout } from "@/sanity/sanity-utils";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
-
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 type ButtonProps = {
   children: React.ReactNode;
   href: string;
@@ -29,12 +29,35 @@ const Button = ({ children, href, type }: ButtonProps) => {
 export default async function Home() {
   const projects = await getProjects();
   const about = await getAbout();
+  console.log(
+    "🚀 ~ file: page.tsx:32 ~ Home ~ about:",
+    about.map((item) => item.socials.map((social) => social.name))
+  );
+
+  const socials = about.map((item) =>
+    item.socials.map((social) => {
+      const obj = {
+        social: social.name,
+        link: social.url,
+        icon:
+          social.name === "Github" ? (
+            <FaGithub className="text-2xl text-orange-300" />
+          ) : (
+            <FaLinkedin className="text-2xl text-orange-300" />
+          ),
+        id: social._id,
+      };
+      return obj;
+    })
+  )[0];
+
+  console.log("🚀 ~ file: page.tsx:40 ~ Home ~ socials:", socials);
   return (
-    <div className="font-2xl mx-8 mt-16 sm:mx-auto sm:px-8 md:max-w-5xl">
+    <div className="font-2xl mx-8 mt-24 sm:mx-auto sm:px-8 md:max-w-5xl">
       <div className="flex items-center justify-between">
         <h1 className="text-7xl">
           Hello I&apos;m{" "}
-          <span className="bg-gradient-conic  from-teal-500 to-orange-200 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-tr  from-teal-500 to-orange-500 bg-clip-text text-transparent">
             Hannanel!
           </span>
         </h1>
@@ -51,7 +74,18 @@ export default async function Home() {
         <div className="mt-5">
           {about &&
             about.map((item) => (
-              <PortableText value={item.text} key={item._id} />
+              <>
+                <PortableText value={item.text} key={item._id} />
+                {socials && (
+                  <div className="mt-4 flex gap-4">
+                    {socials.map((element) => (
+                      <span key={element.id}>
+                        <a href={element.link}>{element.icon}</a>
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </>
             ))}
         </div>
       </div>

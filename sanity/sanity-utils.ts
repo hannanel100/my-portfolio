@@ -35,6 +35,7 @@ export async function getAbout(): Promise<About[]> {
     _createdAt,
     name,
     "slug": slug.current,
-    text
+    text,
+    socials
   }`);
 }
