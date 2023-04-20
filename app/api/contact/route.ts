@@ -15,13 +15,12 @@ export async function POST(request: Request) {
   try {
     const response = await sgMail.send(mail);
     console.log("🚀 ~ file: route.ts:22 ~ POST ~ response:", response);
-
     return NextResponse.json({ response });
   } catch (error: any) {
     console.error("🚀 ~ file: route.ts:26 ~ POST ~ error:", error);
     if (error.response) {
       console.error(error.response.body);
     }
-    return NextResponse.json({ error });
+    return error;
   }
 }
