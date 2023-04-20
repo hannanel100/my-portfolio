@@ -1,6 +1,7 @@
 import Image from "next/image";
 import "./globals.css";
 import CustomNavbar from "./Navbar";
+import QueryProvider from "./context/QueryProvider";
 
 export const metadata = {
   title: "Create Next App",
@@ -16,7 +17,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-pt-20 bg-slate-950 text-slate-50">
       <body>
         <CustomNavbar />
-        {children}
+        <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
   );

@@ -137,7 +137,6 @@ export default async function Home() {
   const about = await getAbout();
   const technologies = await getTechnologies();
   const tools = await getTools();
-  console.log("🚀 ~ file: page.tsx:110 ~ Home ~ tools:", tools);
   const toolsWithIcon = tools.map((tool) => addIconToTool(tool));
   const frontend = technologies.map((item) => {
     if (item.isFrontend) {
@@ -166,10 +165,7 @@ export default async function Home() {
     })
   )[0];
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    console.log(e);
-  };
+
   return (
     <div className="font-2xl mx-8 mt-24 sm:mx-auto sm:px-8 md:max-w-5xl">
       <div className="flex items-center justify-between">
@@ -316,7 +312,7 @@ export default async function Home() {
       </section>
       {/* contact */}
       <section id="contact">
-        <ContactForm  />
+        <ContactForm />
       </section>
     </div>
   );
