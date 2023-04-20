@@ -1,29 +1,27 @@
 import { NextResponse } from "next/server";
-
+import sgMail from "@sendgrid/mail";
 export async function POST(request: Request) {
-  const { name, email, message, subject } = await request.json();
-  const body = `Name: ${name}\nEmail: ${email}\nMessage: ${message}`;
+  process.env.SENDGRID_API_KEY &&
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  const { fullname, email, message, subject } = await request.json();
+  const body = `Name: ${fullname}\nEmail: ${email}\nMessage: ${message}`;
   const mail = {
-    to: "hannanel.gersh@gmail.com",
-    from: email,
+    to: "me@hannanel.dev",
+    from: "me@hannanel.dev",
     subject: subject,
     text: body,
   };
-  //   FIXME: Sendgrid responding with 400
+
   try {
-    const response = await fetch("https://api.sendgrid.com/v3/mail/send", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.SENDGRID_API_KEY}`,
-      },
-      body: JSON.stringify(mail),
-    });
+    const response = await sgMail.send(mail);
     console.log("🚀 ~ file: route.ts:22 ~ POST ~ response:", response);
 
     return NextResponse.json({ response });
-  } catch (error) {
-    console.log("🚀 ~ file: route.ts:26 ~ POST ~ error:", error);
+  } catch (error: any) {
+    console.error("🚀 ~ file: route.ts:26 ~ POST ~ error:", error);
+    if (error.response) {
+      console.error(error.response.body);
+    }
     return NextResponse.json({ error });
   }
 }

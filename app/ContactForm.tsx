@@ -24,7 +24,7 @@ const ContactForm = () => {
       }),
     });
     const data = await response.json();
-    console.log(data);
+    console.log("🚀 ~ file: ContactForm.tsx:27 ~ handleSubmit ~ data:", data);
   };
 
   return (
