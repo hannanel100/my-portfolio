@@ -1,5 +1,4 @@
 "use client";
-import { usePathname, useParams } from "next/navigation";
 
 import Image from "next/image";
 import { Navbar } from "flowbite-react";
@@ -8,13 +7,8 @@ import { useState } from "react";
 
 const CustomNavbar = () => {
   const [activeLink, setActiveLink] = useState("home");
-  const pathname = usePathname();
-  const params = useParams();
-  console.log("🚀 ~ file: Navbar.tsx:11 ~ CustomNavbar ~ params:", params);
 
-  console.log("🚀 ~ file: Navbar.tsx:10 ~ CustomNavbar ~ pathname:", pathname);
   const handleClick = (e: React.MouseEvent<HTMLSpanElement>) => {
-    console.log(e);
     setActiveLink(e.currentTarget.textContent?.toLowerCase() as string);
   };
 

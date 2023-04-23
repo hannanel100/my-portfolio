@@ -111,10 +111,7 @@ const TechnologiesPage = async () => {
     }
   });
   return (
-    <section>
-      <h2 className="mt-24 text-3xl font-bold text-gray-400" id="tech">
-        Technologies
-      </h2>
+    <div>
       <div className="mt-5 grid gap-8 sm:grid-cols-2 md:grid-cols-3">
         <article className="grid grid-rows-[50px_minmax(100px,_1fr)]  justify-between rounded-lg border border-teal-500 border-opacity-40 p-4">
           <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text font-extrabold text-transparent">
@@ -162,7 +159,7 @@ const TechnologiesPage = async () => {
           </div>
         </article>
       </div>
-    </section>
+    </div>
   );
 };
 

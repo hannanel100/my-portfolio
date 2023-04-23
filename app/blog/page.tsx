@@ -22,8 +22,7 @@ const BlogCard = ({ blog }: { blog: Blog }) => {
 const BlogPage = async () => {
   const blogs = await getBlogs();
   return (
-    <div className=" mx-4 mt-40 max-w-4xl text-white sm:mx-auto">
-      <h1 className="text-3xl">Blog</h1>
+    <div className="  max-w-4xl text-white sm:mx-auto">
       <div className=" mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
         {blogs.map((blog) => (
           <BlogCard blog={blog} key={blog._id} />

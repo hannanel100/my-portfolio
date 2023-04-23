@@ -45,8 +45,6 @@ const ContactForm = () => {
 
   return (
     <form className="mb-8 flex flex-col rounded-lg" onSubmit={handleSubmit}>
-      <h2 className="mt-24 text-3xl font-bold text-gray-400">Contact Me!</h2>
-
       <label htmlFor="fullname" className="mt-8 font-light text-gray-50">
         Full name<span className="text-red-500">*</span>
       </label>
