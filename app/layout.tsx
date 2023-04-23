@@ -15,10 +15,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-pt-20 bg-slate-950 text-slate-50">
+    <html
+      lang="en"
+      className=" scroll-pt-60 scroll-smooth bg-slate-950 text-slate-50 sm:scroll-pt-20"
+    >
       <body>
         <CustomNavbar />
-        <QueryProvider>{children}</QueryProvider>
+        <div className="font-2xl mx-8 mt-24 sm:mx-auto sm:px-8 md:max-w-5xl">
+          <QueryProvider>{children}</QueryProvider>
+        </div>
       </body>
     </html>
   );

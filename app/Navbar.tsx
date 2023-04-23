@@ -47,17 +47,7 @@ const CustomNavbar = () => {
             Home
           </span>
         </Link>
-        <Navbar.Link href="/#about">
-          <span
-            className={
-              activeLink === "about" ? "text-gradient" : "text-gray-200"
-            }
-            onClick={handleClick}
-          >
-            About
-          </span>
-        </Navbar.Link>
-        <Navbar.Link href="/#projects">
+        <Link href="/projects">
           <span
             className={
               activeLink === "projects" ? "text-gradient" : "text-gray-200"
@@ -66,17 +56,18 @@ const CustomNavbar = () => {
           >
             Projects
           </span>
-        </Navbar.Link>
-        <Navbar.Link href="/#contact">
+        </Link>
+        <Link href="/technologies">
           <span
             className={
-              activeLink === "contact" ? "text-gradient" : "text-gray-200"
+              activeLink === "technologies" ? "text-gradient" : "text-gray-200"
             }
             onClick={handleClick}
           >
-            Contact
+            Technologies
           </span>
-        </Navbar.Link>
+        </Link>
+
         <Link href="/blog">
           <span
             className={
@@ -85,6 +76,16 @@ const CustomNavbar = () => {
             onClick={handleClick}
           >
             Blog
+          </span>
+        </Link>
+        <Link href="/contact">
+          <span
+            className={
+              activeLink === "contact" ? "text-gradient" : "text-gray-200"
+            }
+            onClick={handleClick}
+          >
+            Contact
           </span>
         </Link>
       </Navbar.Collapse>

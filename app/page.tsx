@@ -133,7 +133,6 @@ const addIconToTool = (tool: Tool) => {
 };
 
 export default async function Home() {
-  const projects = await getProjects();
   const about = await getAbout();
   const technologies = await getTechnologies();
   const tools = await getTools();
@@ -165,9 +164,8 @@ export default async function Home() {
     })
   )[0];
 
-
   return (
-    <div className="font-2xl mx-8 mt-24 sm:mx-auto sm:px-8 md:max-w-5xl">
+    <div className="">
       <div className="flex items-center justify-between">
         <h1 className="text-7xl">
           Hello I&apos;m{" "}
@@ -203,113 +201,7 @@ export default async function Home() {
             ))}
         </div>
       </section>
-
-      <section className="mt-5 " id="projects">
-        <h2 className="mt-24 text-3xl font-bold text-gray-400">My Projects</h2>
-        <div className="mt-6 grid gap-8 sm:grid-cols-2 md:grid-cols-3">
-          {projects.map((project) => (
-            <article
-              key={project._id}
-              className="grid grid-rows-[50px_minmax(100px,_1fr)_100px]  justify-between rounded-lg border border-teal-500 border-opacity-40 p-4"
-            >
-              <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text font-extrabold text-transparent">
-                {project.name}
-              </div>
-              <PortableText value={project.content} />
-              <div className="grid grid-cols-1 grid-rows-2 gap-2 sm:grid-cols-2 sm:grid-rows-1">
-                {project.url && (
-                  <Button type="live" href={project.url}>
-                    Live App
-                  </Button>
-                )}
-                {project.github && (
-                  <Button type="github" href={project.github}>
-                    Code
-                  </Button>
-                )}
-              </div>
-              {project.tags && <h5 className="mt-8 text-xl">Technologies</h5>}
-              <div className="grid  grid-cols-2 place-items-start gap-2  p-2 sm:gap-4">
-                {project.tags &&
-                  project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-lg bg-teal-950 p-2 text-center text-sm text-teal-100 sm:w-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-              </div>
-              {project.image && (
-                <Image
-                  src={project.image}
-                  width={250}
-                  height={150}
-                  alt={project.alt}
-                  className="object-fit mx-auto mt-4 h-36"
-                />
-              )}
-            </article>
-          ))}
-        </div>
-      </section>
-      {/* Technologies section */}
-      <section>
-        <h2 className="mt-24 text-3xl font-bold text-gray-400" id="tech">
-          Technologies
-        </h2>
-        <div className="mt-5 grid gap-8 sm:grid-cols-2 md:grid-cols-3">
-          <article className="grid grid-rows-[50px_minmax(100px,_1fr)]  justify-between rounded-lg border border-teal-500 border-opacity-40 p-4">
-            <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text font-extrabold text-transparent">
-              Frontend
-            </div>
-            <div className="flex flex-wrap items-center justify-evenly  gap-8 ">
-              {frontend &&
-                frontend.map(
-                  (item) =>
-                    item?.icon && (
-                      <Technology technology={item} key={item._id} />
-                    )
-                )}
-            </div>
-          </article>
-          <article className="grid grid-rows-[50px_minmax(100px,_1fr)]  justify-between rounded-lg border border-teal-500 border-opacity-40 p-4">
-            <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text font-extrabold text-transparent">
-              Backend
-            </div>
-            <div className="flex flex-wrap items-center justify-evenly gap-8 ">
-              {backend &&
-                backend.map(
-                  (item) =>
-                    item?.icon && (
-                      <Technology technology={item} key={item._id} />
-                    )
-                )}
-            </div>
-          </article>
-          <article className="grid grid-rows-[50px_minmax(100px,_1fr)]  justify-between rounded-lg border border-teal-500 border-opacity-40 p-4">
-            <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text font-extrabold text-transparent">
-              Tools
-            </div>
-            <div className="flex flex-wrap justify-evenly gap-8 ">
-              {toolsWithIcon &&
-                toolsWithIcon.map((item) => (
-                  <div
-                    className="flex w-16 flex-col items-center gap-2"
-                    key={item._id}
-                  >
-                    <span className="grid h-16 place-items-center rounded-lg bg-teal-950 p-2  text-teal-100 sm:w-full">
-                      {item.icon}
-                    </span>
-                    <span className="bg-gradient-to-tr  from-teal-300 to-orange-400 bg-clip-text text-transparent">
-                      {item.title}
-                    </span>
-                  </div>
-                ))}
-            </div>
-          </article>
-        </div>
-      </section>
+      {/* put in cta buttons to link to different pages */}
       {/* contact */}
       <section id="contact">
         <ContactForm />
