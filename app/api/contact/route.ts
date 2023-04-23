@@ -4,11 +4,11 @@ export async function POST(request: Request) {
   process.env.SENDGRID_API_KEY &&
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   const { fullname, email, message, subject } = await request.json();
-  const body = `Name: ${fullname}\nEmail: ${email}\nMessage: ${message}`;
+  const body = `Name: ${fullname}\nEmail: ${email}\nSubject:${subject} \nMessage: ${message}`;
   const mail = {
     to: "me@hannanel.dev",
     from: "me@hannanel.dev",
-    subject: subject,
+    subject: "You have a new message from you'r portfolio site!",
     text: body,
   };
 
