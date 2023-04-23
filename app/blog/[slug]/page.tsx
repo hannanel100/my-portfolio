@@ -28,7 +28,7 @@ const SingleBlogPage = async ({ params }: { params: { slug: string } }) => {
   console.log("🚀 ~ file: page.tsx:6 ~ SingleBlogPage ~ blog:", blog);
 
   return (
-    <div className="mx-8 mt-40 flex flex-col gap-4">
+    <div className=" flex flex-col gap-4">
       <Link
         href="/blog"
         className="flex items-center gap-2 bg-gradient-to-b from-teal-300 via-orange-200 to-orange-500 bg-clip-text text-lg text-transparent"
