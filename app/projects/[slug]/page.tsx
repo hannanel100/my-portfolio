@@ -9,3 +9,5 @@ const ProjectPage = async ({ params }: { params: { slug: string } }) => {
     </div>
   );
 };
+
+export default ProjectPage;
