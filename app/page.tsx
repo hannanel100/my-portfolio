@@ -3,7 +3,6 @@ import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 
-
 export default async function Home() {
   const about = await getAbout();
   const socials = about.map((item) =>
