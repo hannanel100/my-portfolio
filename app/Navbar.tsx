@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Navbar } from "flowbite-react";
+import Link from "next/link";
 
 const CustomNavbar = () => {
   return (
@@ -28,6 +29,7 @@ const CustomNavbar = () => {
         <Navbar.Link href="#about">About</Navbar.Link>
         <Navbar.Link href="#projects">Projects</Navbar.Link>
         <Navbar.Link href="#contact">Contact</Navbar.Link>
+        <Link href="/blog">Blog</Link>
       </Navbar.Collapse>
     </Navbar>
   );
