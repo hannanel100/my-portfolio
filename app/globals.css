@@ -97,4 +97,7 @@ body {
       opacity: 0;
     }
   }
+  .text-gradient {
+    @apply bg-gradient-to-b from-teal-500 via-orange-200 to-orange-500 bg-clip-text text-transparent;
+  }
 }

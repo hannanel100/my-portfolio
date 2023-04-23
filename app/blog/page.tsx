@@ -1,13 +1,34 @@
 // the home page for the blog in the app
 
+import { getBlogs } from "@/sanity/sanity-utils";
+import { Blog } from "@/types/blog";
+import Image from "next/image";
 import Link from "next/link";
 
-const BlogPage = () => {
+const BlogCard = ({ blog }: { blog: Blog }) => {
+  const date = new Date(blog._createdAt);
+  const formattedDate = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
   return (
-    <div className="mt-40 text-white">
-      <h1>Blog</h1>
-      <p>Here is a blog post</p>
-      <Link href="/blog/first-post">First Post</Link>
+    <div className="flex flex-col gap-2 rounded-lg bg-gray-800 p-4">
+      <Link href={`/blog/${blog.slug}`}>
+        <h3 className="text-xl text-white">{blog.title}</h3>
+      </Link>
+      <p className="text-sm text-gray-400">{formattedDate}</p>
+      <Image src={blog.image} width={200} height={200} alt={blog.alt} />
+    </div>
+  );
+};
+
+const BlogPage = async () => {
+  const blogs = await getBlogs();
+  return (
+    <div className=" mx-4 mt-40 max-w-4xl text-white sm:mx-auto">
+      <h1 className="text-3xl">Blog</h1>
+      <div className=" mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+        {blogs.map((blog) => (
+          <BlogCard blog={blog} key={blog._id} />
+        ))}
+      </div>
     </div>
   );
 };
