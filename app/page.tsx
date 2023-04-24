@@ -2,6 +2,20 @@ import { getAbout } from "@/sanity/sanity-utils";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
+import Link from "next/link";
+
+type CtaButtonProps = {
+  text: "projects" | "technologies" | "blog" | "contact";
+};
+const CtaButtons = ({ text }: CtaButtonProps) => {
+  return (
+    <button className="w-32 rounded-full border border-solid border-slate-950 bg-gradient-to-tr from-teal-500 to-orange-500 px-4 py-2 font-bold text-white transition duration-500 ease-in-out hover:border hover:border-solid hover:border-teal-200 hover:bg-white hover:bg-clip-text hover:text-transparent">
+      <Link href={`/${text}`} className="uppercase">
+        {text}
+      </Link>
+    </button>
+  );
+};
 
 export default async function Home() {
   const about = await getAbout();
@@ -60,6 +74,18 @@ export default async function Home() {
         </div>
       </section>
       {/* put in cta buttons to link to different pages */}
+      <section>
+        <h2 className="mt-16 text-3xl font-bold text-gray-400">
+          Some more stuff to check out...
+        </h2>
+        {/* pretty tailwindcss button, with appropriate colors and subtle animation */}
+        <div className="mx-auto mt-5 flex flex-wrap items-center justify-between gap-4">
+          <CtaButtons text="projects" />
+          <CtaButtons text="technologies" />
+          <CtaButtons text="blog" />
+          <CtaButtons text="contact" />
+        </div>
+      </section>
     </div>
   );
 }
