@@ -41,7 +41,7 @@ export function Projects({ projects }: { projects: Project[] }) {
         data.map((project) => (
           <article
             key={project._id}
-            className="grid grid-rows-[50px_minmax(100px,_1fr)_100px]  justify-between rounded-lg border border-teal-500 border-opacity-40 p-4"
+            className="grid grid-rows-[50px_minmax(100px,_1fr)_100px]  justify-between rounded-lg border border-teal-500 border-opacity-40 bg-gray-800 p-4"
           >
             <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text font-extrabold text-transparent">
               {project.name}
@@ -65,7 +65,7 @@ export function Projects({ projects }: { projects: Project[] }) {
                 project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-lg bg-teal-950 p-2 text-center text-sm text-teal-100 sm:w-full"
+                    className="rounded-lg bg-teal-800 p-2 text-center text-sm text-teal-100 sm:w-full"
                   >
                     {tag}
                   </span>

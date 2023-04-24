@@ -1,66 +1,17 @@
-import {
-  FaLinkedin,
-  FaGithub,
-  FaReact,
-  FaNodeJs,
-  FaPython,
-} from "react-icons/fa";
-import { TbBrandNextjs } from "react-icons/tb";
-import {
-  SiTailwindcss,
-  SiPostgresql,
-  SiTypescript,
-  SiMongodb,
-  SiDocker,
-  SiJavascript,
-  SiCss3,
-  SiHtml5,
-  SiFlask,
-  SiExpress,
-  SiPrisma,
-  SiGit,
-  SiGithub,
-  SiVisualstudiocode,
-  SiFigma,
-} from "react-icons/si";
+import { FaReact } from "react-icons/fa";
+
+import { SiGit, SiGithub, SiVisualstudiocode, SiFigma } from "react-icons/si";
 import { Technologies } from "@/types/technologies";
 import { Tool } from "@/types/tools";
 import { getTechnologies, getTools } from "@/sanity/sanity-utils";
+import { iconHashMap, iconClasses } from "./technologies.hash";
+
 const addIconToTechnology = (technology: Technologies) => {
   const obj = {
     ...technology,
-    icon:
-      technology.name === "React" ? (
-        <FaReact className="text-4xl text-orange-300" />
-      ) : technology.name === "Node" ? (
-        <FaNodeJs className="text-4xl text-orange-300" />
-      ) : technology.name === "Tailwindcss" ? (
-        <SiTailwindcss className="text-4xl text-orange-300" />
-      ) : technology.name === "Python" ? (
-        <FaPython className="text-4xl text-orange-300" />
-      ) : technology.name === "PostgresSQL" ? (
-        <SiPostgresql className="text-4xl text-orange-300" />
-      ) : technology.name === "Typescript" ? (
-        <SiTypescript className="text-4xl text-orange-300" />
-      ) : technology.name === "MongoDB" ? (
-        <SiMongodb className="text-4xl text-orange-300" />
-      ) : technology.name === "Docker" ? (
-        <SiDocker className="text-4xl text-orange-300" />
-      ) : technology.name === "Javascript" ? (
-        <SiJavascript className="text-4xl text-orange-300" />
-      ) : technology.name === "CSS3" ? (
-        <SiCss3 className="text-4xl text-orange-300" />
-      ) : technology.name === "HTML5" ? (
-        <SiHtml5 className="text-4xl text-orange-300" />
-      ) : technology.name === "Flask" ? (
-        <SiFlask className="text-4xl text-orange-300" />
-      ) : technology.name === "Express" ? (
-        <SiExpress className="text-4xl text-orange-300" />
-      ) : technology.name === "Prisma" ? (
-        <SiPrisma className="text-4xl text-orange-300" />
-      ) : (
-        <TbBrandNextjs className="text-4xl text-orange-300" />
-      ),
+    icon: iconHashMap.get(technology.name) || (
+      <FaReact className={iconClasses} />
+    ),
   };
   return obj;
 };
@@ -87,7 +38,7 @@ interface TechnologyProps extends Technologies {
 const Technology = ({ technology }: { technology: TechnologyProps }) => {
   return (
     <div className="flex w-16 flex-col items-center gap-2" key={technology._id}>
-      <span className="grid h-16 place-items-center rounded-lg bg-teal-950 p-2  text-teal-100 sm:w-full">
+      <span className="grid h-16 place-items-center rounded-lg bg-teal-900 p-2  text-teal-100 sm:w-full">
         {technology.icon}
       </span>
       <span className="bg-gradient-to-tr  from-teal-300 to-orange-400 bg-clip-text text-transparent">
@@ -113,7 +64,7 @@ const TechnologiesPage = async () => {
   return (
     <div>
       <div className="mt-5 grid gap-8 sm:grid-cols-2 md:grid-cols-3">
-        <article className="grid grid-rows-[50px_minmax(100px,_1fr)]  justify-between rounded-lg border border-teal-500 border-opacity-40 p-4">
+        <article className="grid grid-rows-[50px_minmax(100px,_1fr)]  justify-between rounded-lg border border-teal-500  border-opacity-40 bg-gray-800 p-4">
           <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text font-extrabold text-transparent">
             Frontend
           </div>
@@ -125,7 +76,7 @@ const TechnologiesPage = async () => {
               )}
           </div>
         </article>
-        <article className="grid grid-rows-[50px_minmax(100px,_1fr)]  justify-between rounded-lg border border-teal-500 border-opacity-40 p-4">
+        <article className="grid grid-rows-[50px_minmax(100px,_1fr)]  justify-between rounded-lg border border-teal-500 border-opacity-40 bg-gray-800 p-4">
           <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text font-extrabold text-transparent">
             Backend
           </div>
@@ -137,7 +88,7 @@ const TechnologiesPage = async () => {
               )}
           </div>
         </article>
-        <article className="grid grid-rows-[50px_minmax(100px,_1fr)]  justify-between rounded-lg border border-teal-500 border-opacity-40 p-4">
+        <article className="grid grid-rows-[50px_minmax(100px,_1fr)]  justify-between rounded-lg border border-teal-500 border-opacity-40 bg-gray-800 p-4">
           <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text font-extrabold text-transparent">
             Tools
           </div>
@@ -148,7 +99,7 @@ const TechnologiesPage = async () => {
                   className="flex w-16 flex-col items-center gap-2"
                   key={item._id}
                 >
-                  <span className="grid h-16 place-items-center rounded-lg bg-teal-950 p-2  text-teal-100 sm:w-full">
+                  <span className="grid h-16 place-items-center rounded-lg bg-teal-900 p-2  text-teal-100 sm:w-full">
                     {item.icon}
                   </span>
                   <span className="bg-gradient-to-tr  from-teal-300 to-orange-400 bg-clip-text text-transparent">
