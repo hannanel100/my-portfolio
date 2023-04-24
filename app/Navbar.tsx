@@ -3,14 +3,10 @@
 import Image from "next/image";
 import { Navbar } from "flowbite-react";
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 const CustomNavbar = () => {
-  const [activeLink, setActiveLink] = useState("home");
-
-  const handleClick = (e: React.MouseEvent<HTMLSpanElement>) => {
-    setActiveLink(e.currentTarget.textContent?.toLowerCase() as string);
-  };
+  const pathname = usePathname();
 
   return (
     <Navbar
@@ -33,10 +29,7 @@ const CustomNavbar = () => {
       <Navbar.Collapse>
         <Link href="/">
           <span
-            className={
-              activeLink === "home" ? "text-gradient" : "text-gray-200"
-            }
-            onClick={handleClick}
+            className={pathname === "/" ? "text-gradient" : "text-gray-200"}
           >
             Home
           </span>
@@ -44,9 +37,8 @@ const CustomNavbar = () => {
         <Link href="/projects">
           <span
             className={
-              activeLink === "projects" ? "text-gradient" : "text-gray-200"
+              pathname === "/projects" ? "text-gradient" : "text-gray-200"
             }
-            onClick={handleClick}
           >
             Projects
           </span>
@@ -54,9 +46,8 @@ const CustomNavbar = () => {
         <Link href="/technologies">
           <span
             className={
-              activeLink === "technologies" ? "text-gradient" : "text-gray-200"
+              pathname === "/technologies" ? "text-gradient" : "text-gray-200"
             }
-            onClick={handleClick}
           >
             Technologies
           </span>
@@ -65,9 +56,8 @@ const CustomNavbar = () => {
         <Link href="/blog">
           <span
             className={
-              activeLink === "blog" ? "text-gradient" : "text-gray-200"
+              pathname.includes("/blog") ? "text-gradient" : "text-gray-200"
             }
-            onClick={handleClick}
           >
             Blog
           </span>
@@ -75,9 +65,8 @@ const CustomNavbar = () => {
         <Link href="/contact">
           <span
             className={
-              activeLink === "contact" ? "text-gradient" : "text-gray-200"
+              pathname === "/contact" ? "text-gradient" : "text-gray-200"
             }
-            onClick={handleClick}
           >
             Contact
           </span>
