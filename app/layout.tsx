@@ -6,6 +6,18 @@ import { Inconsolata } from "next/font/google";
 export const metadata: Metadata = {
   title: "Hannanel's Portfolio",
   description: "This app is a portfolio for Hannanel's work.",
+  openGraph: {
+    title: "Hannanel's Portfolio",
+    images: [
+      {
+        url: "https://res.cloudinary.com/divvyla3a/image/upload/v1682338837/portfolio_home_ntqsry.png",
+        width: 800,
+        height: 600,
+        alt: "Og Image Alt",
+      },
+    ],
+    url: "https://hannanel.dev",
+  },
 };
 
 const inconsolata = Inconsolata({
