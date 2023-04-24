@@ -18,7 +18,7 @@ const CustomNavbar = () => {
     >
       <Navbar.Brand to="/">
         <Image src="/logo.png" width={50} height={50} alt="logo" />
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+        <span className="select-none self-center whitespace-nowrap text-xl font-semibold dark:text-white ">
           <span className="bg-gradient-to-tr  from-teal-500 to-orange-500 bg-clip-text text-transparent">
             Hannanel
           </span>{" "}
