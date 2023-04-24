@@ -50,11 +50,11 @@ interface CardProps {
 }
 const Card = ({ title, items }: CardProps) => {
   return (
-    <article className="grid grid-rows-[50px_minmax(100px,_1fr)]  justify-between rounded-lg border border-teal-500  border-opacity-40 bg-gray-800 p-4">
-      <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text font-extrabold text-transparent">
+    <article className="mx-auto grid grid-cols-1 grid-rows-[50px_minmax(100px,_1fr)] place-content-center justify-between  rounded-lg border border-teal-500 border-opacity-40  bg-gray-800 p-4 px-20 sm:px-0">
+      <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text pl-2 text-xl font-extrabold text-transparent">
         {title}
       </div>
-      <div className="flex flex-wrap items-center justify-evenly  gap-6 ">
+      <div className="flex flex-col items-center justify-evenly gap-6  sm:flex-row sm:flex-wrap ">
         {items &&
           items.map(
             (item) => item?.icon && <IconCard item={item} key={item._id} />
@@ -67,7 +67,7 @@ const Card = ({ title, items }: CardProps) => {
 const IconCard = ({ item }: { item: TechnologyProps | ToolsProps }) => {
   return (
     <div className="flex w-24 flex-col items-center gap-2" key={item._id}>
-      <span className="grid h-24 place-items-center rounded-lg bg-teal-900 p-2  text-teal-100 sm:w-full">
+      <span className="grid h-24 w-full place-items-center rounded-lg bg-teal-900 p-2  text-teal-100 sm:w-full">
         {item.icon}
       </span>
       <span className="bg-gradient-to-tr  from-teal-300 to-orange-400 bg-clip-text text-transparent">
