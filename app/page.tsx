@@ -3,7 +3,6 @@ import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import Link from "next/link";
-export { reportWebVitals } from "next-axiom";
 type CtaButtonProps = {
   text: "projects" | "technologies" | "blog" | "contact";
 };
