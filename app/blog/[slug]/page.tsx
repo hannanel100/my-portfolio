@@ -36,7 +36,7 @@ const SingleBlogPage = async ({ params }: { params: { slug: string } }) => {
         <FaBackward className="text-lg text-orange-300" />
         <h3 className="text-xl">Back to Blog</h3>
       </Link>
-      <div className="grid sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2">
         <div className="flex flex-col gap-2">
           <PortableText
             value={blog.text}

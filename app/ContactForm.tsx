@@ -152,15 +152,15 @@ const ContactForm = () => {
                 <svg width="80px" height="24px" viewBox="0 0 31 73">
                   <g
                     stroke="none"
-                    stroke-width="1"
+                    strokeWidth="1"
                     fill="none"
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                   >
                     <g
                       className="smokes"
                       transform="translate(2.000000, 2.000000)"
                       stroke="#ffffff"
-                      stroke-width="5"
+                      strokeWidth="5"
                     >
                       <g className="smoke-1">
                         <path

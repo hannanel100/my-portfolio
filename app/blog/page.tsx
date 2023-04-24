@@ -14,13 +14,21 @@ const BlogCard = ({ blog }: { blog: Blog }) => {
         <h3 className="text-xl text-white">{blog.title}</h3>
       </Link>
       <p className="text-sm text-gray-400">{formattedDate}</p>
-      <Image src={blog.image} width={200} height={200} alt={blog.alt} />
+      <Image
+        src={blog.image}
+        width={200}
+        height={200}
+        alt={blog.alt}
+        className="self-center"
+      />
     </div>
   );
 };
 
 const BlogPage = async () => {
-  const blogs = await getBlogs();
+  const blogs = (await getBlogs()).sort((a, b) => {
+    return new Date(b._createdAt).getTime() - new Date(a._createdAt).getTime();
+  });
   return (
     <div className="  max-w-4xl text-white sm:mx-auto">
       <div className=" mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
