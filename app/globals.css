@@ -101,3 +101,13 @@ body {
     @apply bg-gradient-to-b from-teal-500 via-orange-200 to-orange-500 bg-clip-text text-transparent;
   }
 }
+::-webkit-scrollbar {
+  @apply w-2;
+}
+::-webkit-scrollbar-track {
+  @apply bg-slate-950;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-gradient-to-b from-teal-500 via-orange-200 to-orange-500;
+  border-radius: 100vw;
+}
