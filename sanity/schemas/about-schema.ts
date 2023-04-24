@@ -44,6 +44,11 @@ const about = {
               title: "URL",
               type: "url",
             },
+            {
+              name: "email",
+              title: "Email",
+              type: "email",
+            },
           ],
         },
       ],

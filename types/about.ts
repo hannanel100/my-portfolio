@@ -8,7 +8,8 @@ export type About = {
   text: PortableTextBlock[];
   socials: {
     name: string;
-    url: string;
+    url?: string;
+    email?: string;
     _key: string;
   }[];
 };

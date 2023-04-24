@@ -24,7 +24,7 @@ export default function RootLayout({
     >
       <body>
         <CustomNavbar />
-        <main className="font-2xl mx-8 mt-24 sm:mx-auto sm:px-8 md:max-w-5xl">
+        <main className="font-2xl mx-8 mb-4 mt-24 sm:mx-auto sm:px-8 md:max-w-5xl">
           <QueryProvider>{children}</QueryProvider>
         </main>
       </body>

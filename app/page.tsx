@@ -1,7 +1,7 @@
 import { getAbout } from "@/sanity/sanity-utils";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
-import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import Link from "next/link";
 type CtaButtonProps = {
   text: "projects" | "technologies" | "blog" | "contact";
@@ -22,18 +22,22 @@ export default async function Home() {
     item.socials.map((social) => {
       const obj = {
         social: social.name,
-        link: social.url,
+        link: social?.url,
         icon:
           social.name === "Github" ? (
             <FaGithub className="text-2xl text-orange-300" />
-          ) : (
+          ) : social.name === "Linkedin" ? (
             <FaLinkedin className="text-2xl text-orange-300" />
+          ) : (
+            <FaEnvelope className="text-2xl text-orange-300" />
           ),
         id: social._key,
+        email: social?.email,
       };
       return obj;
     })
   )[0];
+  console.log("🚀 ~ file: page.tsx:40 ~ Home ~ socials:", socials);
 
   return (
     <div className="">
@@ -63,7 +67,9 @@ export default async function Home() {
                   <div className="mt-4 flex gap-4">
                     {socials.map((element) => (
                       <span key={element.id}>
-                        <a href={element.link}>{element.icon}</a>
+                        <a href={element.link ? element.link : element.email}>
+                          {element.icon}
+                        </a>
                       </span>
                     ))}
                   </div>

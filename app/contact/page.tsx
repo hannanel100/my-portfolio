@@ -1,13 +1,12 @@
-import ContactForm from "../ContactForm"
+import ContactForm from "../ContactForm";
 
 const ContactPage = () => {
+  return (
+    <section>
+      <ContactForm />
+    
+    </section>
+  );
+};
 
-    return (
-        
-        <section>
-            <ContactForm />
-        </section>
-    )
-}
-
-export default ContactPage
+export default ContactPage;
