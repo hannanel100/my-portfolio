@@ -1,10 +1,4 @@
-import {
-  FaLinkedin,
-  FaGithub,
-  FaReact,
-  FaNodeJs,
-  FaPython,
-} from "react-icons/fa";
+import { FaReact, FaNodeJs, FaPython } from "react-icons/fa";
 import { TbBrandNextjs } from "react-icons/tb";
 import {
   SiTailwindcss,
@@ -21,6 +15,7 @@ import {
   SiGit,
   SiGithub,
   SiVisualstudiocode,
+  SiReactquery,
   SiFigma,
 } from "react-icons/si";
 export const iconClasses = "text-4xl text-orange-300";
@@ -43,3 +38,5 @@ iconHashMap.set("Git", <SiGit className={iconClasses} />);
 iconHashMap.set("Github", <SiGithub className={iconClasses} />);
 iconHashMap.set("VSCode", <SiVisualstudiocode className={iconClasses} />);
 iconHashMap.set("Figma", <SiFigma className={iconClasses} />);
+iconHashMap.set("Next", <TbBrandNextjs className={iconClasses} />);
+iconHashMap.set("React-Query", <SiReactquery className={iconClasses} />);
