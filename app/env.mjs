@@ -10,7 +10,7 @@ export const env = createEnv({
   server: {
     SENDGRID_API_KEY: z.string().min(10),
     UPSTASH_REDIS_REST_URL: z.string().url(),
-    UPSTASH_REDIS_REST_TOKEN: z.string().min(10),
+    UPSTASH_REDIS_REST_TOKEN: z.string(),
     NEXT_PUBLIC_AXIOM_INGEST_ENDPOINT: z.string().url(),
   },
   /*
