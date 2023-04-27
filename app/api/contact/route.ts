@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import sgMail from "@sendgrid/mail";
 import { Ratelimit } from "@upstash/ratelimit"; // for deno: see above
 import { Redis } from "@upstash/redis";
+import { env } from "@/app/env.mjs";
 
 // Create a new ratelimiter, that allows 10 requests per 10 seconds
 const ratelimit = new Ratelimit({
@@ -16,8 +17,7 @@ const ratelimit = new Ratelimit({
   prefix: "@upstash/ratelimit",
 });
 export async function POST(request: Request) {
-  process.env.SENDGRID_API_KEY &&
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  sgMail.setApiKey(env.SENDGRID_API_KEY);
   const { fullname, email, message, subject } = await request.json();
   if (!email || !message || !subject || !fullname) {
     return new Response("Missing required field", { status: 400 });
