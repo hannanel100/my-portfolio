@@ -46,6 +46,12 @@ const project = {
       ],
     },
     { name: "tags", title: "Tags", type: "array", of: [{ type: "string" }] },
+    {
+      name: "details",
+      title: "Details",
+      type: "array",
+      of: [{ type: "block" }],
+    },
   ],
 };
 

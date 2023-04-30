@@ -11,4 +11,5 @@ export type Project = {
   github: string;
   content: PortableTextBlock[];
   tags: string[];
+  details: PortableTextBlock[];
 };

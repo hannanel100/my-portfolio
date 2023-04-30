@@ -44,7 +44,7 @@ export function Projects({ projects }: { projects: Project[] }) {
         data.map((project) => (
           <article
             key={project._id}
-            className="grid grid-rows-[50px_minmax(100px,_1fr)_120px]  justify-between rounded-lg border border-teal-500 border-opacity-40 bg-gray-800 p-4"
+            className="grid grid-rows-[50px_160px_120px]  justify-between rounded-lg border border-teal-500 border-opacity-40 bg-gray-800 p-4"
           >
             <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text font-extrabold text-transparent">
               {project.name}
@@ -63,7 +63,7 @@ export function Projects({ projects }: { projects: Project[] }) {
               )}
               {project.slug && (
                 <Link
-                  href={`/projects/${project.slug}` as Route}
+                  href={`/project/${project.slug}` as Route}
                   className="w-full sm:grid sm:place-content-center"
                 >
                   <button

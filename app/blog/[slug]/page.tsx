@@ -3,8 +3,7 @@ import { getBlogBySlug } from "@/sanity/sanity-utils";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaAddressCard, FaBackward } from "react-icons/fa";
-import { GrFormPreviousLink } from "react-icons/gr";
+import { FaBackward } from "react-icons/fa";
 
 const CustomPortableTextComponent = {
   block: {
