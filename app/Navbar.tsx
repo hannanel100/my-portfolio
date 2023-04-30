@@ -3,6 +3,26 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+const resumeURL =
+  "https://res.cloudinary.com/divvyla3a/image/upload/v1682849256/Hannane_Resume_ajzzzv.pdf";
+const DownloadButton = () => {
+  const handleDownload = () => {
+    window.open(resumeURL, "_blank");
+  };
+
+  return (
+    <div className="p-1 md:ml-10">
+      <button
+        onClick={handleDownload}
+        className="block w-full rounded-md px-3 py-2 text-start text-sm font-medium text-gray-200 hover:bg-orange-200 hover:text-teal-700"
+      >
+        Resume
+      </button>
+    </div>
+  );
+};
+
 type Link = {
   href: "/" | "/projects" | "/technologies" | "/blog" | "/contact";
   text: string;
@@ -134,6 +154,7 @@ const CustomNavbar = () => {
                     </Link>
                   </div>
                 ))}
+                <DownloadButton />
               </div>
             </div>
           )}
@@ -154,6 +175,7 @@ const CustomNavbar = () => {
                   </Link>
                 </div>
               ))}
+              <DownloadButton />
             </div>
           </div>
         </div>
