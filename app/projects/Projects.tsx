@@ -46,7 +46,7 @@ export function Projects({ projects }: { projects: Project[] }) {
             key={project._id}
             className="grid grid-rows-[50px_160px_120px]  justify-between rounded-lg border border-teal-500 border-opacity-40 bg-gray-800 p-4"
           >
-            <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text font-extrabold text-transparent">
+            <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text text-2xl font-extrabold text-transparent">
               {project.name}
             </div>
             <PortableText value={project.content} />
@@ -74,13 +74,15 @@ export function Projects({ projects }: { projects: Project[] }) {
                 </Link>
               )}
             </div>
-            {project.tags && <h5 className="mt-8 text-xl">Technologies</h5>}
-            <div className="grid  grid-cols-2 place-items-start gap-2  p-2 sm:gap-4">
+            {project.tags && (
+              <h5 className="mt-2 text-xl sm:mt-0">Technologies</h5>
+            )}
+            <div className=" mt-2 flex flex-grow-0 flex-wrap items-center gap-2">
               {project.tags &&
                 project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-lg bg-teal-800 p-2 text-center text-sm text-teal-100 sm:w-full"
+                    className=" grid place-content-center rounded-full bg-gray-200 px-3 py-1 text-center text-sm font-semibold text-gray-700 sm:inline-block"
                   >
                     {tag}
                   </span>
