@@ -3,12 +3,11 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { RESUME_URL } from "./DownloadResume";
 
-const resumeURL =
-  "https://res.cloudinary.com/divvyla3a/image/upload/v1682849256/Hannanel_Gershinsky_Fullstack_Resume.pdf";
 const DownloadButton = () => {
   const handleDownload = () => {
-    window.open(resumeURL, "_blank");
+    window.open(RESUME_URL, "_blank");
   };
 
   return (
