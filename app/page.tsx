@@ -56,6 +56,7 @@ export default async function Home() {
           height={300}
           alt="me"
           className="hidden sm:block"
+          priority={true}
         />
       </div>
       <section id="about" className="mt-8">

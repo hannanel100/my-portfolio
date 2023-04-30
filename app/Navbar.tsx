@@ -72,7 +72,13 @@ const CustomNavbar = () => {
             <div className="flex flex-shrink-0 items-center">
               {/* The logo link, using the Link component from Next.js */}
               <Link href="/" className="flex text-xl font-bold text-white">
-                <Image src="/logo.png" width={50} height={50} alt="logo" />
+                <Image
+                  src="/logo.png"
+                  width={50}
+                  height={50}
+                  alt="logo"
+                  priority={true}
+                />
                 <span className="select-none self-center whitespace-nowrap text-xl font-semibold dark:text-white ">
                   <span className="bg-gradient-to-tr  from-teal-500 to-orange-500 bg-clip-text text-transparent">
                     Hannanel
