@@ -14,10 +14,13 @@ export const metadata: Metadata = {
         url: "https://res.cloudinary.com/divvyla3a/image/upload/v1682338837/portfolio_home_ntqsry.png",
         width: 800,
         height: 600,
-        alt: "Og Image Alt",
+        alt: "Hannanel's Portfolio Home Page",
       },
     ],
     url: "https://hannanel.dev",
+    type: "website",
+    description:
+      "This app is a portfolio for Hannanel Gershinsky, a Fullstack web developer.",
   },
 };
 
