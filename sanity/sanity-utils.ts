@@ -110,7 +110,8 @@ export async function getProjectBySlug(slug: string): Promise<Project> {
     url,
     github,
     content,
-    tags
+    tags,
+    details
   }`,
     {
       slug,
