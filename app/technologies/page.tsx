@@ -50,7 +50,7 @@ interface CardProps {
 }
 const Card = ({ title, items }: CardProps) => {
   return (
-    <article className="mx-auto grid grid-cols-1 grid-rows-[50px_minmax(100px,_1fr)] place-content-center justify-between  rounded-lg border border-teal-500 border-opacity-40  bg-gray-800 p-4 px-20 sm:px-0">
+    <article className="mx-auto grid grid-cols-1 grid-rows-[50px_minmax(100px,_1fr)] place-content-center justify-between  rounded-lg border border-teal-500 border-opacity-40  bg-gray-800 p-4 px-20 sm:px-0 ">
       <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text pl-2 text-xl font-extrabold text-transparent">
         {title}
       </div>

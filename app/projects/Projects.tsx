@@ -13,20 +13,48 @@ type ButtonProps = {
   type: "github" | "live";
 };
 const Button = ({ children, href, type }: ButtonProps) => {
-  let color = "";
+  let bgColor = "";
+  let textColor = "";
+  let borderColor = "";
   if (type === "github") {
-    color = "bg-orange-700  text-orange-300";
+    bgColor = "bg-orange-700";
+    textColor = "text-orange-300";
+    borderColor = "border-orange-700";
   } else if (type === "live") {
-    color = "bg-teal-700  text-teal-300";
+    bgColor = "bg-teal-700";
+    textColor = "text-teal-300";
+    borderColor = "border-teal-700";
   }
 
   return (
-    <a href={href} className="w-full sm:grid sm:place-content-center">
-      <button
-        className={`b h-full w-full transform  cursor-pointer rounded-lg shadow-lg  outline-none transition-transform duration-150 focus:ring-4 active:scale-75 sm:w-20  sm:py-2 ${color} grid place-content-center`}
+    <a
+      href={href}
+      className={`group relative inline-flex items-center justify-center overflow-hidden rounded-full border border-solid ${borderColor} p-4 px-6 py-3 font-medium ${textColor} h-10 shadow-md transition duration-300 ease-out`}
+    >
+      <span
+        className={`ease absolute inset-0 flex h-full w-full -translate-x-full items-center justify-center ${bgColor} text-white duration-300 group-hover:translate-x-0`}
+      >
+        <svg
+          className="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M14 5l7 7m0 0l-7 7m7-7H3"
+          ></path>
+        </svg>
+      </span>
+      <span
+        className={`ease absolute flex h-full w-full transform items-center justify-center ${textColor} transition-all duration-300 group-hover:translate-x-full`}
       >
         {children}
-      </button>
+      </span>
+      <span className="invisible relative">Button Text</span>
     </a>
   );
 };
@@ -44,7 +72,7 @@ export function Projects({ projects }: { projects: Project[] }) {
         data.map((project) => (
           <article
             key={project._id}
-            className="grid grid-rows-[50px_160px_120px]  justify-between rounded-lg border border-teal-500 border-opacity-40 bg-gray-800 p-4"
+            className=" relative  grid grid-rows-[50px_160px_120px] justify-between rounded-lg border border-teal-500 border-opacity-40 bg-gray-800 p-4 opacity-100 after:absolute after:-left-[1px] after:top-2/3 after:h-24 after:w-[1px] after:bg-gradient-to-t after:from-transparent after:via-orange-500 after:to-transparent after:opacity-0 after:transition-all after:duration-500 after:ease-in-out hover:after:top-[30%] hover:after:opacity-100"
           >
             <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text text-2xl font-extrabold text-transparent">
               {project.name}
@@ -64,13 +92,32 @@ export function Projects({ projects }: { projects: Project[] }) {
               {project.slug && (
                 <Link
                   href={`/project/${project.slug}` as Route}
-                  className="w-full sm:grid sm:place-content-center"
+                  className={`group relative inline-flex h-10 items-center justify-center overflow-hidden rounded-full border border-solid border-teal-300 p-4 px-6 py-3 font-medium text-teal-700 shadow-md transition duration-300 ease-out`}
                 >
-                  <button
-                    className={`b grid h-full w-full transform cursor-pointer place-content-center rounded-lg  bg-teal-300 text-teal-800 shadow-lg outline-none transition-transform duration-150 focus:ring-4 active:scale-75 sm:w-20  sm:py-2`}
+                  <span
+                    className={`ease absolute inset-0 flex h-full w-full -translate-x-full items-center justify-center bg-teal-300 text-white duration-300 group-hover:translate-x-0`}
+                  >
+                    <svg
+                      className="h-6 w-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      ></path>
+                    </svg>
+                  </span>
+                  <span
+                    className={`ease absolute flex h-full w-full transform items-center justify-center text-teal-700 transition-all duration-300 group-hover:translate-x-full`}
                   >
                     Details
-                  </button>
+                  </span>
+                  <span className="invisible relative">Button Text</span>
                 </Link>
               )}
             </div>
