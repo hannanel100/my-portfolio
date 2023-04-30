@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const resumeURL =
-  "https://res.cloudinary.com/divvyla3a/image/upload/v1682849256/Hannane_Resume_ajzzzv.pdf";
+  "https://res.cloudinary.com/divvyla3a/image/upload/v1682849256/Hannanel_Gershinsky_Fullstack_Resume.pdf";
 const DownloadButton = () => {
   const handleDownload = () => {
     window.open(resumeURL, "_blank");
