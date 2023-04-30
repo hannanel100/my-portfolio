@@ -15,15 +15,15 @@ type ButtonProps = {
 const Button = ({ children, href, type }: ButtonProps) => {
   let color = "";
   if (type === "github") {
-    color = "bg-orange-700 p-2  text-orange-300";
+    color = "bg-orange-700  text-orange-300";
   } else if (type === "live") {
-    color = "bg-teal-700 p-2  text-teal-300";
+    color = "bg-teal-700  text-teal-300";
   }
 
   return (
     <a href={href} className="w-full sm:grid sm:place-content-center">
       <button
-        className={`b h-full w-full transform cursor-pointer rounded-lg px-4  shadow-lg outline-none transition-transform duration-150 focus:ring-4 active:scale-75  sm:py-2 ${color} grid place-content-center`}
+        className={`b h-full w-full transform  cursor-pointer rounded-lg shadow-lg  outline-none transition-transform duration-150 focus:ring-4 active:scale-75 sm:w-20  sm:py-2 ${color} grid place-content-center`}
       >
         {children}
       </button>
@@ -67,7 +67,7 @@ export function Projects({ projects }: { projects: Project[] }) {
                   className="w-full sm:grid sm:place-content-center"
                 >
                   <button
-                    className={`b grid h-full w-full transform cursor-pointer place-content-center  rounded-lg bg-teal-300 px-4 text-teal-800 shadow-lg outline-none transition-transform duration-150 focus:ring-4 active:scale-75  sm:py-2`}
+                    className={`b grid h-full w-full transform cursor-pointer place-content-center rounded-lg  bg-teal-300 text-teal-800 shadow-lg outline-none transition-transform duration-150 focus:ring-4 active:scale-75 sm:w-20  sm:py-2`}
                   >
                     Details
                   </button>
