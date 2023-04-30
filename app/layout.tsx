@@ -1,6 +1,7 @@
 import "./globals.css";
 import CustomNavbar from "./Navbar";
 import QueryProvider from "./context/QueryProvider";
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Inconsolata } from "next/font/google";
 export const metadata: Metadata = {
@@ -39,6 +40,7 @@ export default function RootLayout({
         <main className="font-2xl mx-8 mb-4 mt-24 sm:mx-auto sm:px-8 md:max-w-5xl">
           <QueryProvider>{children}</QueryProvider>
         </main>
+        <Analytics />
       </body>
     </html>
   );
