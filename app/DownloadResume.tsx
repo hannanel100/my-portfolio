@@ -2,7 +2,7 @@
 import Tooltip from "./Tooltip";
 import { FaFileDownload } from "react-icons/fa";
 export const RESUME_URL =
-  "https://res.cloudinary.com/divvyla3a/image/upload/v1682942395/Hannanel_Gershinsky_Fullstack_Resume.pdf";
+  "https://res.cloudinary.com/divvyla3a/image/upload/v1682949261/Hannanel_Gershinsky_Fullstack_Resume_comyh5.pdf";
 
 const DownloadResumeIcon = () => {
   const handleResumeDownload = () => {
