@@ -15,13 +15,14 @@ const BlogCard = ({ blog }: { blog: Blog }) => {
         <h3 className="text-xl text-white">{blog.title}</h3>
       </Link>
       <p className="text-sm text-gray-400">{formattedDate}</p>
-      <p>{blog.excerpt}</p>
+      <p className="text-sm">{blog.excerpt}</p>
       <Image
         src={blog?.image}
         width={200}
         height={200}
         alt={blog.alt}
         className="self-center"
+        priority={true}
       />
     </div>
   );
