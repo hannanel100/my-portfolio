@@ -74,6 +74,7 @@ export async function getBlogs(): Promise<Blog[]> {
     "slug": slug.current,
     "image": image.asset->url,
     "alt": image.alt,
+    excerpt
   }`);
 }
 

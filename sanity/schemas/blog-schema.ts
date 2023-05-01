@@ -53,6 +53,7 @@ const blog = {
         },
       ],
     },
+    { name: "excerpt", title: "Excerpt", type: "text", rows: 2 },
     {
       name: "image",
       title: "Image",

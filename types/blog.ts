@@ -8,4 +8,5 @@ export type Blog = {
   text: PortableTextBlock[];
   image: string;
   alt: string;
+  excerpt: string;
 };
