@@ -24,6 +24,33 @@ const blog = {
         {
           type: "block",
         },
+        {
+          type: "image",
+          fields: [
+            {
+              name: "alt",
+              type: "string",
+              title: "Alternative text",
+              description: "Important for SEO and accessiblity.",
+              options: {
+                hotspot: true,
+              },
+            },
+          ],
+        },
+        {
+          type: "code",
+          options: {
+            language: "javascript",
+            languageAlternatives: [
+              { title: "Javascript", value: "javascript" },
+              { title: "Typescript", value: "typescript" },
+              { title: "HTML", value: "html" },
+              { title: "CSS", value: "css" },
+            ],
+            withFilename: true,
+          },
+        },
       ],
     },
     {

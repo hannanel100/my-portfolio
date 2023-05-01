@@ -5,26 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaBackward } from "react-icons/fa";
 
-const CustomPortableTextComponent = {
-  block: {
-    h1: (props: any) => <h1 className="text-3xl">{props.children}</h1>,
-    h2: (props: any) => <h2 className="text-2xl">{props.children}</h2>,
-    h3: (props: any) => <h3 className="text-lg">{props.children}</h3>,
-    h4: (props: any) => <h4 className="text-base">{props.children}</h4>,
-    h5: (props: any) => <h5 className="text-sm">{props.children}</h5>,
-    h6: (props: any) => <h6 className="text-xs">{props.children}</h6>,
-    normal: (props: any) => <p className="text-base">{props.children}</p>,
-    blockquote: (props: any) => (
-      <blockquote className="text-base">{props.children}</blockquote>
-    ),
-    code: (props: any) => <code className="text-base">{props.children}</code>,
-  },
-};
+import { CustomPortableTextComponent } from "../../(sanity-config)/CustomPortableText";
 
 const SingleBlogPage = async ({ params }: { params: { slug: string } }) => {
-  console.log("🚀 ~ file: page.tsx:4 ~ SingleBlogPage ~ params:", params);
-  const blog = await getBlogBySlug(params.slug);
-  console.log("🚀 ~ file: page.tsx:6 ~ SingleBlogPage ~ blog:", blog);
+  const { slug } = params;
+  const blog = await getBlogBySlug(slug);
 
   return (
     <div className=" flex flex-col gap-4">
