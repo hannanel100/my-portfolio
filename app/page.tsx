@@ -10,11 +10,11 @@ type CtaButtonProps = {
 };
 const CtaButtons = ({ text }: CtaButtonProps) => {
   return (
-    <button className="w-32 rounded-full border border-solid border-slate-950 bg-gradient-to-tr from-teal-500 to-orange-500 px-4 py-2 font-bold text-white transition duration-500 ease-in-out hover:border hover:border-solid hover:border-teal-200 hover:bg-white hover:bg-clip-text hover:text-transparent">
-      <Link href={`/${text}`} className="uppercase">
+    <Link href={`/${text}`}>
+      <button className="w-32 rounded-full border border-solid border-slate-950 bg-gradient-to-tr from-teal-500 to-orange-500 px-4 py-2 font-bold uppercase text-white transition duration-500 ease-in-out hover:border hover:border-solid hover:border-teal-200 hover:bg-white hover:bg-clip-text hover:text-transparent">
         {text}
-      </Link>
-    </button>
+      </button>
+    </Link>
   );
 };
 
@@ -69,7 +69,11 @@ export default async function Home() {
                 {socials && (
                   <div className="mt-4 flex gap-4">
                     {socials.map((element) => (
-                      <Tooltip text={element.social} key={element.id} location="bottom">
+                      <Tooltip
+                        text={element.social}
+                        key={element.id}
+                        location="bottom"
+                      >
                         <a href={element.link ? element.link : element.email}>
                           {element.icon}
                         </a>
