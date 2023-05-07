@@ -10,6 +10,7 @@ import { CustomPortableTextComponent } from "../../(sanity-config)/CustomPortabl
 const SingleBlogPage = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
   const blog = await getBlogBySlug(slug);
+  console.log("🚀 ~ file: page.tsx:13 ~ SingleBlogPage ~ blog:", blog);
 
   return (
     <div className=" flex flex-col gap-4">
@@ -20,19 +21,19 @@ const SingleBlogPage = async ({ params }: { params: { slug: string } }) => {
         <FaBackward className="text-lg text-orange-300" />
         <h3 className="text-xl">Back to Blog</h3>
       </Link>
-      <div className="grid gap-4 sm:grid-cols-2">
-        <div className="flex flex-col gap-2">
-          <PortableText
-            value={blog.text}
-            components={CustomPortableTextComponent}
-          />
-        </div>
+
+      <div className="flex  flex-col gap-2">
+        <h1 className="text-xl sm:text-3xl ">{blog.title}</h1>
         <Image
           src={blog.image}
-          width={500}
-          height={500}
+          width={300}
+          height={300}
           alt={blog.alt}
-          className="w-full object-cover"
+          className="self-center"
+        />
+        <PortableText
+          value={blog.text}
+          components={CustomPortableTextComponent}
         />
       </div>
     </div>
