@@ -4,13 +4,13 @@ import { getBlogs } from "@/sanity/sanity-utils";
 import { Blog } from "@/types/blog";
 import Image from "next/image";
 import Link from "next/link";
-
+import Card from "../Card";
 const BlogCard = ({ blog }: { blog: Blog }) => {
   console.log("🚀 ~ file: page.tsx:9 ~ BlogCard ~ blog:", blog);
   const date = new Date(blog._createdAt);
   const formattedDate = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
   return (
-    <div className="relative flex flex-col gap-2 rounded-lg bg-gray-800 p-4 after:absolute after:-left-[1px] after:top-2/3 after:h-32 after:w-[1px] after:bg-gradient-to-t after:from-transparent after:via-orange-500 after:to-transparent after:opacity-0 after:transition-all after:duration-500 after:ease-in-out hover:after:top-0 hover:after:opacity-100">
+    <Card animateTo="top">
       <Link href={`/blog/${blog.slug}`}>
         <h3 className="text-xl text-white">{blog.title}</h3>
       </Link>
@@ -24,7 +24,7 @@ const BlogCard = ({ blog }: { blog: Blog }) => {
         className="self-center"
         priority={true}
       />
-    </div>
+    </Card>
   );
 };
 

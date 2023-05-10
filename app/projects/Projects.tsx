@@ -3,7 +3,7 @@ import { getProjects } from "@/sanity/sanity-utils";
 import { PortableText } from "@portabletext/react";
 import { useQuery } from "@tanstack/react-query";
 import { Project } from "@/types/project";
-
+import Card from "../Card";
 import Image from "next/image";
 import Link from "next/link";
 import { Route } from "next";
@@ -70,9 +70,10 @@ export function Projects({ projects }: { projects: Project[] }) {
     <>
       {data &&
         data.map((project) => (
-          <article
+          <Card
+            animateTo="middle"
             key={project._id}
-            className=" relative  grid grid-rows-[50px_160px_120px] justify-between rounded-lg border border-teal-500 border-opacity-40 bg-gray-800 p-4 opacity-100 after:absolute after:-left-[1px] after:top-2/3 after:h-24 after:w-[1px] after:bg-gradient-to-t after:from-transparent after:via-orange-500 after:to-transparent after:opacity-0 after:transition-all after:duration-500 after:ease-in-out hover:after:top-[30%] hover:after:opacity-100"
+            className=" relative grid grid-rows-[50px_150px_60px_40px_110px] justify-between gap-0 rounded-lg border border-teal-500 border-opacity-40 bg-gray-800 p-4 opacity-100 "
           >
             <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text text-2xl font-extrabold text-transparent">
               {project.name}
@@ -144,7 +145,7 @@ export function Projects({ projects }: { projects: Project[] }) {
                 className="object-fit mx-auto mt-4 h-36"
               />
             )}
-          </article>
+          </Card>
         ))}
     </>
   );

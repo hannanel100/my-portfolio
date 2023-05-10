@@ -5,6 +5,7 @@ import { Tool } from "@/types/tools";
 import { getTechnologies, getTools } from "@/sanity/sanity-utils";
 import { iconHashMap, iconClasses } from "./technologies.hash";
 import { toolsIconHashMap } from "./tools.hash";
+import Card from "../Card";
 const addIconToTechnology = (technology: Technologies) => {
   const obj = {
     ...technology,
@@ -48,9 +49,12 @@ interface CardProps {
     | undefined
   )[];
 }
-const Card = ({ title, items }: CardProps) => {
+const LocalCard = ({ title, items }: CardProps) => {
   return (
-    <article className="mx-auto grid grid-cols-1 grid-rows-[50px_minmax(100px,_1fr)] place-content-center justify-between  rounded-lg border border-teal-500 border-opacity-40  bg-gray-800 p-4 px-20 sm:px-0 ">
+    <Card
+      animateTo="none"
+      className="mx-auto grid grid-cols-1 grid-rows-[50px_minmax(100px,_1fr)] place-content-center justify-between  rounded-lg border border-teal-500 border-opacity-40  bg-gray-800 p-4 px-20 sm:px-0 "
+    >
       <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text pl-2 text-xl font-extrabold text-transparent">
         {title}
       </div>
@@ -60,7 +64,7 @@ const Card = ({ title, items }: CardProps) => {
             (item) => item?.icon && <IconCard item={item} key={item._id} />
           )}
       </div>
-    </article>
+    </Card>
   );
 };
 
@@ -96,9 +100,9 @@ const TechnologiesPage = async () => {
   return (
     <div>
       <div className="mt-5 grid gap-8 sm:grid-cols-2 md:grid-cols-3">
-        {frontend && <Card title="Frontend" items={frontend} />}
-        {backend && <Card title="Backend" items={backend} />}
-        {toolsWithIcon && <Card title="Tools" items={toolsWithIcon} />}
+        {frontend && <LocalCard title="Frontend" items={frontend} />}
+        {backend && <LocalCard title="Backend" items={backend} />}
+        {toolsWithIcon && <LocalCard title="Tools" items={toolsWithIcon} />}
       </div>
     </div>
   );
