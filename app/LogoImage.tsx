@@ -8,6 +8,7 @@ const LogoImage = ({ size }: { size: "sm" | "lg" }) => {
       alt="me"
       priority={true}
       className={`${size === "lg" ? "hidden sm:block" : ""}`}
+      loading="lazy"
     />
   );
 };
