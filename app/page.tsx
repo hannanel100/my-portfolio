@@ -5,6 +5,7 @@ import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import Link from "next/link";
 import DownloadResumeIcon from "./DownloadResume";
 import Tooltip from "./Tooltip";
+import LogoImage from "./LogoImage";
 type CtaButtonProps = {
   text: "projects" | "technologies" | "blog" | "contact";
 };
@@ -50,14 +51,7 @@ export default async function Home() {
             Hannanel!
           </span>
         </h1>
-        <Image
-          src="/logo.png"
-          width={300}
-          height={300}
-          alt="me"
-          className="hidden sm:block"
-          priority={true}
-        />
+        <LogoImage size="lg" />
       </div>
       <section id="about" className="mt-8">
         <h2 className="text-3xl font-bold text-gray-400">About Me</h2>

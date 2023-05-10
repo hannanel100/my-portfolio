@@ -15,6 +15,9 @@ const nextConfig = {
         pathname: "/images/akedaqmq/production/**",
       },
     ],
+    images: {
+      formats: ["image/avif", "image/webp", "image/png"],
+    },
   },
 };
 

@@ -4,14 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { RESUME_URL } from "./DownloadResume";
-
+import LogoImage from "./LogoImage";
 const DownloadButton = () => {
   const handleDownload = () => {
     window.open(RESUME_URL, "_blank");
   };
 
   return (
-    <div className="p-1 md:ml-10">
+    <div className="p-1 md:ml-10 md:p-0">
       <button
         onClick={handleDownload}
         className="block w-full rounded-md px-3 py-2 text-start text-sm font-medium text-gray-200 hover:bg-orange-200 hover:text-teal-700"
@@ -71,13 +71,7 @@ const CustomNavbar = () => {
             <div className="flex flex-shrink-0 items-center">
               {/* The logo link, using the Link component from Next.js */}
               <Link href="/" className="flex text-xl font-bold text-white">
-                <Image
-                  src="/logo.png"
-                  width={50}
-                  height={50}
-                  alt="logo"
-                  priority={true}
-                />
+                <LogoImage size="sm" />
                 <span className="select-none self-center whitespace-nowrap text-xl font-semibold dark:text-white ">
                   <span className="bg-gradient-to-tr  from-teal-500 to-orange-500 bg-clip-text text-transparent">
                     Hannanel
