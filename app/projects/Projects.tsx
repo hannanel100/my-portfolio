@@ -73,7 +73,7 @@ export function Projects({ projects }: { projects: Project[] }) {
           <Card
             animateTo="middle"
             key={project._id}
-            className=" relative grid grid-rows-[50px_150px_60px_40px_110px] justify-between gap-0 rounded-lg border border-teal-500 border-opacity-40 bg-gray-800 p-4 opacity-100 "
+            className=" grid-rows-auto relative grid justify-between gap-0 rounded-lg border border-teal-500 border-opacity-40 bg-gray-800 p-4 opacity-100 sm:grid-rows-[50px_140px_80px_40px_110px] "
           >
             <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text text-2xl font-extrabold text-transparent">
               {project.name}
