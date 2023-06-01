@@ -17,6 +17,7 @@ import {
   SiVisualstudiocode,
   SiReactquery,
   SiFigma,
+  SiSvelte,
 } from "react-icons/si";
 export const iconClasses = "text-4xl text-orange-300";
 export let iconHashMap = new Map<string, JSX.Element>();
@@ -40,3 +41,5 @@ iconHashMap.set("VSCode", <SiVisualstudiocode className={iconClasses} />);
 iconHashMap.set("Figma", <SiFigma className={iconClasses} />);
 iconHashMap.set("Next", <TbBrandNextjs className={iconClasses} />);
 iconHashMap.set("React-Query", <SiReactquery className={iconClasses} />);
+iconHashMap.set("Svelte", <SiSvelte className={iconClasses} />);
+iconHashMap.set("Sveltekit", <SiSvelte className={iconClasses} />);
