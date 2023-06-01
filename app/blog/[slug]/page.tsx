@@ -1,16 +1,41 @@
 //this is the page that will be rendered for each blog post
-import { getBlogBySlug } from "@/sanity/sanity-utils";
+import { getBlogBySlug, getBlogMetaBySlug } from "@/sanity/sanity-utils";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaBackward } from "react-icons/fa";
 
 import { CustomPortableTextComponent } from "../../(sanity-config)/CustomPortableText";
+import { Metadata, ResolvingMetadata } from "next";
+type Props = {
+  params: { slug: string };
+};
+export async function generateMetadata(
+  { params }: Props,
+  parent?: ResolvingMetadata
+): Promise<Metadata> {
+  // read route params
+  const slug = params.slug;
 
-const SingleBlogPage = async ({ params }: { params: { slug: string } }) => {
+  const { title, image, alt, _createdAt } = await getBlogBySlug(slug);
+
+  return {
+    title: title,
+    openGraph: {
+      images: [
+        {
+          url: image,
+          width: 800,
+          height: 600,
+          alt: alt,
+        },
+      ],
+    },
+  };
+}
+const SingleBlogPage = async ({ params }: Props) => {
   const { slug } = params;
   const blog = await getBlogBySlug(slug);
-  console.log("🚀 ~ file: page.tsx:13 ~ SingleBlogPage ~ blog:", blog);
 
   return (
     <div className=" flex flex-col gap-4">

@@ -10,3 +10,10 @@ export type Blog = {
   alt: string;
   excerpt: string;
 };
+
+export type BlogMeta = {
+  image: string;
+  alt: string;
+  title: string;
+  _createdAt: string;
+};

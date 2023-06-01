@@ -2,7 +2,7 @@ import { Project } from "@/types/project";
 import { About } from "@/types/about";
 import { Technologies } from "@/types/technologies";
 import { Tool } from "@/types/tools";
-import { Blog } from "@/types/blog";
+import { Blog, BlogMeta } from "@/types/blog";
 import { createClient, groq } from "next-sanity";
 import config from "./client-config";
 
@@ -90,6 +90,23 @@ export async function getBlogBySlug(slug: string): Promise<Blog> {
     "image": image.asset->url,
     "alt": image.alt,
     text
+  }`,
+    {
+      slug,
+    }
+  );
+}
+// return type for getBlogMetaBySlug should be BlogMeta
+
+export async function getBlogMetaBySlug(slug: string): Promise<BlogMeta> {
+  console.log("slug", slug);
+  const client = createClient(config);
+  return client.fetch(
+    groq`*[_type=="blog" && slug.current == $slug][0]{
+    "image": image.asset->url
+    "alt": image.alt,
+    title,
+    _createdAt,
   }`,
     {
       slug,
