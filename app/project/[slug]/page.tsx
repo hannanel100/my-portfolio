@@ -4,7 +4,30 @@ import Link from "next/link";
 import { FaBackward, FaEye, FaGithub } from "react-icons/fa";
 import Image from "next/image";
 import { CustomPortableTextComponent } from "../../(sanity-config)/CustomPortableText";
+import { Metadata } from "next";
+type Props = {
+  params: { slug: string };
+};
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  // read route params
+  const slug = params.slug;
 
+  const { image, alt, name } = await getProjectBySlug(slug);
+
+  return {
+    title: name,
+    openGraph: {
+      images: [
+        {
+          url: image,
+          width: 800,
+          height: 600,
+          alt: alt,
+        },
+      ],
+    },
+  };
+}
 const ProjectPage = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
   const project = await getProjectBySlug(slug);
