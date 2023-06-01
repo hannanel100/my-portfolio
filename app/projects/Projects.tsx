@@ -63,6 +63,14 @@ export function Projects({ projects }: { projects: Project[] }) {
     queryKey: ["projects"],
     queryFn: getProjects,
     initialData: projects,
+    onSuccess: (data) => {
+      //add sorting by date
+      data.sort((a, b) => {
+        return (
+          new Date(b._createdAt).getTime() - new Date(a._createdAt).getTime()
+        );
+      });
+    },
   });
   console.log("🚀 ~ file: Projects.tsx:37 ~ Projects ~ data:", data);
 
@@ -78,7 +86,7 @@ export function Projects({ projects }: { projects: Project[] }) {
             <div className="bg-gradient-to-r from-teal-500 to-orange-200 bg-clip-text text-2xl font-extrabold text-transparent">
               {project.name}
             </div>
-            <PortableText value={project.content} />
+            <PortableText value={project.content[0]} />
             <div className="grid grid-cols-1 grid-rows-3 place-content-center gap-2 sm:grid-cols-3 sm:grid-rows-1">
               {project.url && (
                 <Button type="live" href={project.url}>
