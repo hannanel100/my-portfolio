@@ -6,14 +6,11 @@ import Link from "next/link";
 import { FaBackward } from "react-icons/fa";
 
 import { CustomPortableTextComponent } from "../../(sanity-config)/CustomPortableText";
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 type Props = {
   params: { slug: string };
 };
-export async function generateMetadata(
-  { params }: Props,
-  parent?: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // read route params
   const slug = params.slug;
 
