@@ -40,8 +40,6 @@ export default async function Home() {
       return obj;
     })
   )[0];
-  console.log("🚀 ~ file: page.tsx:40 ~ Home ~ socials:", socials);
-
   return (
     <div className="">
       <div className="flex items-center justify-between">
