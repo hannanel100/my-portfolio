@@ -32,7 +32,7 @@ const BlogPage = async () => {
     return new Date(b._createdAt).getTime() - new Date(a._createdAt).getTime();
   });
   return (
-    <div className="  max-w-4xl text-white sm:mx-auto">
+    <div className="text-white sm:mx-auto">
       <div className=" mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
         {blogs.map((blog) => (
           <BlogCard blog={blog} key={blog._id} />
