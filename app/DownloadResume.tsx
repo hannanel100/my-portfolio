@@ -1,12 +1,11 @@
 "use client";
 import Tooltip from "./Tooltip";
 import { FaFileDownload } from "react-icons/fa";
-export const RESUME_URL =
-  "https://res.cloudinary.com/divvyla3a/image/upload/v1682949261/Hannanel_Gershinsky_Fullstack_Resume_comyh5.pdf";
+import { env } from "@/app/env.mjs";
 
 const DownloadResumeIcon = () => {
   const handleResumeDownload = () => {
-    window.open(RESUME_URL, "_blank");
+    window.open(env.NEXT_PUBLIC_RESUME_URL, "_blank");
   };
   return (
     <Tooltip text="Download Resume" location="top">

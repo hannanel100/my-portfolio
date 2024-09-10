@@ -3,11 +3,11 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { RESUME_URL } from "./DownloadResume";
+import { env } from "@/app/env.mjs";
 import LogoImage from "./LogoImage";
 const DownloadButton = () => {
   const handleDownload = () => {
-    window.open(RESUME_URL, "_blank");
+    window.open(env.NEXT_PUBLIC_RESUME_URL, "_blank");
   };
 
   return (
