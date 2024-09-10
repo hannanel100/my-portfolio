@@ -14,6 +14,12 @@ const nextConfig = {
         port: "",
         pathname: "/images/akedaqmq/production/**",
       },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        port: "",
+        pathname: "/divvyla3a/image/upload/**",
+      },
     ],
     formats: ["image/avif", "image/webp"],
   },
