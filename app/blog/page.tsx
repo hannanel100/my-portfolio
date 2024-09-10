@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Card from "../Card";
 const BlogCard = ({ blog }: { blog: Blog }) => {
-  console.log("🚀 ~ file: page.tsx:9 ~ BlogCard ~ blog:", blog);
   const date = new Date(blog._createdAt);
   const formattedDate = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
   return (
@@ -32,9 +31,8 @@ const BlogPage = async () => {
   const blogs = (await getBlogs()).sort((a, b) => {
     return new Date(b._createdAt).getTime() - new Date(a._createdAt).getTime();
   });
-  console.log("🚀 ~ file: page.tsx:32 ~ blogs ~ blogs:", blogs);
   return (
-    <div className="  max-w-4xl text-white sm:mx-auto">
+    <div className="text-white sm:mx-auto">
       <div className=" mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
         {blogs.map((blog) => (
           <BlogCard blog={blog} key={blog._id} />

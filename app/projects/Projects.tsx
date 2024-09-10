@@ -72,8 +72,6 @@ export function Projects({ projects }: { projects: Project[] }) {
       });
     },
   });
-  console.log("🚀 ~ file: Projects.tsx:37 ~ Projects ~ data:", data);
-
   return (
     <>
       {data &&

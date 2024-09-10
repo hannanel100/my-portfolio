@@ -5,7 +5,6 @@ import axios from "axios";
 
 const sendEmailToApi = async (data: any) => {
   let response = await axios.post("/api/contact", data);
-  console.log("🚀 ~ file: ContactForm.tsx:15 ~ response:", response);
   return response;
 };
 
